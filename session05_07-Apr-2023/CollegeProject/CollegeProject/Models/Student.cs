@@ -7,6 +7,7 @@ namespace CollegeProject.Models {
         public string Phone { get; set; }
         public string Email { get; set; }
         public int CourseId { get; set; }
+        public string ImagePath { get; set; }
 
         [ForeignKey("CourseId")]
         public Course Course { get; set; }

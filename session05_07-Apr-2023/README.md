@@ -1,6 +1,6 @@
 # Session 05 - Validation and Image Upload
 
-[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=n7y4b7n7t7)
+[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=t0g5a6c4s2)
 
 ## Introduction
 In this lecture we will implement a CRUD on `Student Model` which uses a foreign key `CourseId`. Also we will look at form `validation` and some `validation attributes`.  Delete Confirmation
@@ -37,3 +37,9 @@ public async Task<IActionResult> DeleteConfirmed(int id)
     return RedirectToAction("Index");
 }
 ```
+
+### IFormFile
+IFormFile is an interface in ASP.NET Core that represents an uploaded file. When a user uploads a file through a form on a web page, the file is sent to the server as part of an HTTP request. The IFormFile interface provides a way to access the contents of the uploaded file and its metadata, such as the file name and content type.
+
+### FileStream
+Speaking of FileStream, it is a class in the System.IO namespace that provides a way to read and write data to and from a file. It is commonly used in C# to read or write the contents of a file on disk.
