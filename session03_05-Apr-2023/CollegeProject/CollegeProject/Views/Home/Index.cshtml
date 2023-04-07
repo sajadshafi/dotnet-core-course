@@ -1,0 +1,35 @@
+﻿@using CollegeProject.Models.ViewModels
+@model IEnumerable<StudentModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2 class="mb-3">Welcome to College Project</h2>
+    <div>
+        <p class="mb-3 border-bottom-2">Students that are registered currently for 2023</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Course Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var student in Model) {
+                    <tr>
+                        <th scope="row">@student.Name</th>
+                        <td>@student.Phone</td>
+                        <td>@student.Email</td>
+                        <td>@student.CourseName</td>
+                        <td>@student.CourseFee</td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

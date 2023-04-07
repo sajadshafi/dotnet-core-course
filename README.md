@@ -1,2 +1,2 @@
-# dotnet-core-course
-A course session for learning C# .net
+# C# dotnet core course
+A course for learning C# .net with videos and Coding examples
