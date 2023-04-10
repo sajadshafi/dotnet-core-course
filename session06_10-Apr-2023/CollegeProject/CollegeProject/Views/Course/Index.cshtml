@@ -1,0 +1,61 @@
+@using CollegeProject.Models.ViewModels
+@model IEnumerable<CourseModel>
+
+@{
+  ViewData["Title"] = "Courses";
+}
+<div>
+  <p class="mb-3 border-bottom-2">Students that are registered currently for 2023</p>
+  @if(TempData["result"] != null){<p class="alert alert-success">@TempData["result"]</p>}
+  <a asp-action="AddCourse" asp-controller="Course" class="px-3 py-2 bg-primary text-light">Add Course</a>
+  <table class="table">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Course Name</th>
+              <th scope="col">Course Fee</th>
+              <th scope="col">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach(var course in Model) {
+            <tr>
+                <td>@course.Name</td>
+                <td>@course.CourseFee</td>
+                <td>
+                    <div class="d-flex">
+                    <a class="bg-danger px-3 py-2 text-light rounded" asp-controller="Course" asp-action="DeleteCourse" asp-route-Id=@course.Id>Delete</a>
+                    <a class="bg-warning mx-2 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="EditCourse" asp-route-Id=@course.Id>Edit</a>
+                    </div>
+                </td>
+            </tr>
+          }
+      </tbody>
+  </table>
+
+
+
+
+  @* <table class="table">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Course Fee</th>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach(var student in Model) {
+              <tr>
+                  <th scope="row">@student.Name</th>
+                  <td>@student.Phone</td>
+                  <td>@student.Email</td>
+                  <td>@student.CourseName</td>
+                  <td>@student.CourseFee</td>
+              </tr>
+          }
+          
+      </tbody>
+  </table> *@
+</div>
