@@ -1,0 +1,35 @@
+@using CollegeProject.Models.ViewModels
+@model StudentModel
+
+@{
+  ViewData["Title"] = "Student Details";
+}
+
+@{
+var parms = new Dictionary<string, string>
+            {
+                { "image", @Model.ImagePath },
+                { "id", @Model.Id.ToString() }
+            };
+}
+
+<div>Show details of Student  @ViewData["Id"]</div>
+@TempData["result"]
+<div>
+  <form asp-action="UpdateProfile" method="post">
+  <div class="my-4">
+    <img src="~/Images/@Model.ImagePath" height="100" alt="This is a student" />
+    <div class="buttons my-2">
+      <label for="displayImage" class="btn btn-warning text-light">
+        Update Button
+      </label>
+      <input id="displayImage" name="imagePath" class="d-none" type="file" accept=".jpg,.png,.webp" />
+      <a asp-action="DeleteImage" asp-all-route-data="parms" class="btn btn-danger text-light">Delete Image</a>
+    </div>
+  </div>
+  <p>Student Name: @Model.Name</p>
+  <p>Student Phone: @Model.Phone</p>
+  <p>Student Email: @Model.Email</p>
+    <input type="submit" value="Save" class="btn btn-info text-light">
+  </form>
+</div>
