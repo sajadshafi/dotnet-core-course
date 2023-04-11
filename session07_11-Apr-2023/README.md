@@ -27,3 +27,15 @@ The ASP.NET MVC framework includes the following set of standard HTML Helpers (t
 - Html.RadioButton()
 - Html.TextArea()
 - Html.TextBox()
+
+
+### System.IO
+
+System IO gives us the ability to work with the files and directories
+
+some usefull functions from System.IO:
+
+- Directory.Exists(_dirName);
+- Directory.Create(_dirName);
+- Files.Delete(_filePath);
+- Files.Exists(_filePath);
