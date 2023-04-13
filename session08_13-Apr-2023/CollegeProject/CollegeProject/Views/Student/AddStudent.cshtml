@@ -1,0 +1,53 @@
+@using CollegeProject.Models.ViewModels
+@model StudentModel
+
+@{
+  ViewData["Title"] = "Add Student";
+}
+
+<div class="w-75 mx-auto">
+  @if(TempData["result"] != null) {
+    <p class="alert alert-danger">@TempData["result"]</p>
+  }
+  <form asp-controller="Student" asp-action="AddStudent" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label asp-for="Name">Enter Name</label>
+      <input type="text" asp-for="Name" class="form-control"/>
+      <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+      <label asp-for="Phone">Enter Phone</label>
+      <input type="text" asp-for="Phone" class="form-control"/>
+      <span class="text-danger" asp-validation-for="Phone"></span>
+    </div>
+    <div class="form-group">
+      @* <label asp-for="Email">Enter Email</label>
+      <input type="email" asp-for="Email" class="form-control"/>
+      <span class="text-danger" asp-validation-for="Email"></span> *@
+      @Html.LabelFor(model => model.Email, new {id="emailLabel", @class="testclass"})
+      @Html.TextBoxFor(model => model.Email, new {@class="form-control"})
+      @Html.ValidationMessageFor(model => model.Email, "Email is required", new {@class="text-danger"})
+    </div>
+    <div class="form-group">
+      <label asp-for="CourseId">Enter Course</label>
+      <select asp-for="CourseId" class="form-control">
+        @if(ViewBag.Courses != null) {
+          foreach(Course course in ViewBag.Courses) {
+            <option value="@course.Id">@course.Name</option>
+          }
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Image">Upload Image</label>
+      <input type="file" asp-for="Image" class="form-control"/>
+    </div>
+    <button class="bg-primary mt-3 border-0 rounded px-3 py-2 text-light" type="submit">Save Student</button>
+  </form>
+</div>
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+  }
+}
