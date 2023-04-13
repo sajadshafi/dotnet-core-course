@@ -6,4 +6,9 @@
 <div class="text-center">
     <h2 class="mb-3">Welcome to College Project</h2>
     
+    @* HTML Helpers *@
+    @Html.Partial("~/Views/Shared/_Partial1.cshtml")
+
+    @await Html.PartialAsync("partials/_message.cshtml");
+    
 </div>

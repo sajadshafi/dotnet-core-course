@@ -56,26 +56,44 @@ namespace CollegeProject.Controllers {
         string imageName = Path.GetFileNameWithoutExtension(model.Image.FileName);
         string imageExtension = Path.GetExtension(model.Image.FileName);
 
-        string imagePath = imageName + DateTime.Now.ToString("yymmssfff") + imageExtension;
+        List<string> acceptedFiles = new List<string>(){
+          ".jpg",
+          ".png",
+          ".webp",
+          ".jpeg"
+        };
 
-        bool exists = System.IO.Directory.Exists(wwwRootPath + "/Images/");
-        if(!exists) System.IO.Directory.CreateDirectory(wwwRootPath + "/Images/");
-
-        string path = Path.Combine(wwwRootPath + "/Images/", imagePath);
-        try {
-          using (var fileStream = new FileStream(path, FileMode.Create))
-          {
-              await model.Image.CopyToAsync(fileStream);
-          }
-          newStudent.ImagePath = imagePath;
-
-          await _db.Students.AddAsync(newStudent);
-          await _db.SaveChangesAsync();
-          TempData["result"] = "Saved Successfully!";
-          return RedirectToAction(nameof(Index));
-        } catch(Exception ex) {
-          TempData["result"] = "Exception occured" + ex.Message;
+        if(model.Image.Length > 200000) {
+          TempData["result"] = "Image is large, image must be less than 200KB";
           return View();
+        }
+
+        if(acceptedFiles.Contains(imageExtension)) {
+          string imagePath = imageName + DateTime.Now.ToString("yymmssfff") + imageExtension;
+
+          bool exists = System.IO.Directory.Exists(wwwRootPath + "/Images/");
+          if(!exists) System.IO.Directory.CreateDirectory(wwwRootPath + "/Images/");
+
+          string path = Path.Combine(wwwRootPath + "/Images/", imagePath);
+          try {
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {     
+                await model.Image.CopyToAsync(fileStream);
+            }
+            newStudent.ImagePath = imagePath;
+
+            await _db.Students.AddAsync(newStudent);
+            await _db.SaveChangesAsync();
+            TempData["result"] = "Saved Successfully!" + model.Image.Length;
+            return RedirectToAction(nameof(Index));
+          } catch(Exception ex) {
+            TempData["result"] = "Exception occured" + ex.Message;
+            return View();
+          }
+        } else {
+           TempData["result"] = "Image not supported";
+         ViewBag.Courses = await _db.Courses.ToListAsync();
+        return View();
         }
       } else {
         TempData["result"] = "Model is not valid";
@@ -109,9 +127,42 @@ namespace CollegeProject.Controllers {
       return View(student);
     }
   
-    public IActionResult UpdateProfile(StudentModel model) {
+    public async Task<IActionResult> UpdateProfile(int id) {
       // Request.Form.Files
-      return Ok("Image updated successfully");
+      Student student = await _db.Students.FirstOrDefaultAsync(x => x.Id == id);
+      try {
+        string wwwRootPath = _hostEnvironment.WebRootPath;
+        bool fileExist = System.IO.File.Exists(wwwRootPath + "/Images/" + student.ImagePath);
+        if(fileExist) {
+          string d_path = Path.Combine(wwwRootPath + "/Images/", student.ImagePath);
+          System.IO.File.Delete(d_path);
+        }
+
+        bool exists = System.IO.Directory.Exists(wwwRootPath + "/Images/");
+        if(!exists) System.IO.Directory.CreateDirectory(wwwRootPath + "/Images/");
+
+        if(Request.Form.Files.Count > 0) {
+          string imageName = Path.GetFileNameWithoutExtension(Request.Form.Files[0].FileName);
+          string imageExtension = Path.GetExtension(Request.Form.Files[0].FileName);
+
+          string imagePath = imageName + DateTime.Now.ToString("yymmssfff") + imageExtension;
+
+          string path = Path.Combine(wwwRootPath + "/Images/", imagePath);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await Request.Form.Files[0].CopyToAsync(fileStream);
+            }
+          student.ImagePath = imagePath;
+          TempData["result"] = "Image updated successfully!";
+        }
+        else student.ImagePath = null;
+        await _db.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+
+      } catch(Exception ex) {
+        TempData["result"] = "Failed to delete File "+ ex.Message;
+        return View();
+      }
     }
 
     [HttpGet]

@@ -16,13 +16,14 @@ var parms = new Dictionary<string, string>
 <div>Show details of Student  @ViewData["Id"]</div>
 @TempData["result"]
 <div>
-  <form asp-action="UpdateProfile" method="post">
+  <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
   <div class="my-4">
     <img src="~/Images/@Model.ImagePath" height="100" alt="This is a student" />
     <div class="buttons my-2">
       <label for="displayImage" class="btn btn-warning text-light">
         Update Button
       </label>
+      <input type="hidden" asp-for="@Model.Id"/>
       <input id="displayImage" name="imagePath" class="d-none" type="file" accept=".jpg,.png,.webp" />
       <a asp-action="DeleteImage" asp-all-route-data="parms" class="btn btn-danger text-light">Delete Image</a>
     </div>

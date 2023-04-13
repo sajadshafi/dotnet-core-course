@@ -1,6 +1,6 @@
 # Session 08 - JavaScript and DOM
 
-[Click here to download the lecture for this session]()
+[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=a8i1x4t5x8)
 
   - FIXME: Fix image updation not working
             - Encryption type to form is not set
@@ -10,12 +10,7 @@
 ### Partial Views
 A small part of the web page extracted into another file that can be reused over multiple pages.
 
-
-### Introduction to JavaScript
- - Basic JavaScript
- - DOM (Document Object Model)
-
-### Upcoming Tasks
+### Tasks completed in this session
 
   - TODO: Vaidation of Image Upload
   - TODO: Show Confirm dialog before delete

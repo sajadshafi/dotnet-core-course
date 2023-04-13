@@ -23,7 +23,8 @@
                 <td>@course.CourseFee</td>
                 <td>
                     <div class="d-flex">
-                    <a class="bg-danger px-3 py-2 text-light rounded" asp-controller="Course" asp-action="DeleteCourse" asp-route-Id=@course.Id>Delete</a>
+                        <button id="deleteCourse" onclick="deleteCourse(@course.Id)" class="btn btn-danger">Delete</button>
+                    @* <a class="bg-danger px-3 py-2 text-light rounded" asp-controller="Course" asp-action="DeleteCourse" asp-route-Id=@course.Id>Delete</a> *@
                     <a class="bg-warning mx-2 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="EditCourse" asp-route-Id=@course.Id>Edit</a>
                     </div>
                 </td>
@@ -59,3 +60,37 @@
       </tbody>
   </table> *@
 </div>
+
+
+<div class="modal" id="deletePopup" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure!</h5>
+        <button type="button" id="close_icon" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <a type="button" id="confirm_button" class="btn btn-danger">Confirm</a>
+        <button type="button" id="close_model" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        function deleteCourse(id){
+            $('#deletePopup').show();
+            $("#confirm_button").attr("href", "/Course/DeleteCourse/"+id);
+            $('#close_model').click(() => {
+$('#deletePopup').hide();
+            });
+            $('#close_icon').click(() => {
+$('#deletePopup').hide();
+            });
+        }
+    </script>
+}
