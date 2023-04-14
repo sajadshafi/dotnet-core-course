@@ -1,0 +1,22 @@
+@using CollegeProject.Models.ViewModels
+@model StudentModel
+
+<div class="card" style="width: 18rem;">
+  @if(Model.ImagePath != null) {
+    <img class="card-img-top" src="~/Images/@Model.ImagePath" alt="Card image cap">
+  } else {
+    <img class="card-img-top" src="~/Img/user.webp" alt="Card image cap">
+  }
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+    <p><span>Phone No: </span>@Model.Phone</p>
+    <p><span>Email: </span>@Model.Email</p>
+    <div class="d-flex">
+    <a asp-controller="Student" asp-action="StudentDetails" asp-route-Id="@Model.Id" class="btn btn-primary">Show</a>
+    <div class="d-flex">
+        <a class="bg-danger ms-3 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="DeleteCourse" asp-route-Id=@Model.Id>Delete</a>
+        <a class="bg-warning mx-2 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="EditCourse" asp-route-Id=@Model.Id>Edit</a>
+    </div>
+    </div>
+  </div>
+</div>
