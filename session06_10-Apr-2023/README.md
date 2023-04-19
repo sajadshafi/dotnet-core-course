@@ -1,4 +1,4 @@
-# Session 05 - Validation and Image Upload
+# Session 06 - Validation and Image Upload
 
 [Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=m2k7o1d1g4)
 
