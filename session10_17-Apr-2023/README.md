@@ -1,4 +1,4 @@
-# session 09 - Javascript DOM
+# session 10 - Javascript DOM
 
 [Download Video lecture here](https://www.idrive.com/idrive/sh/sh?k=x7w9i5v5e3)
 
