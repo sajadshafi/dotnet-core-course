@@ -1,4 +1,4 @@
-# Session 05 - file Update and deletion
+# Session 07 - file Update and deletion
 
 [Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=t4w2y9f3q9)
 

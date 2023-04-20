@@ -1,0 +1,29 @@
+﻿@using CollegeProject.Models.ViewModels
+@model StudentModel
+@{
+    TempData["Title"] = "Edit Student";
+}
+<div class="w-75 mx-auto">
+    <p>This is Student Edit page</p>
+    <form action="/Student/EditStudent" method="post">
+        <input type="hidden" asp-for="@Model.Id">
+        <div class="form-group">
+            <label for="name">Enter Name</label>
+            <input name="Name" class="form-control" id="name" value="@Model.Name" />
+        </div>
+        <div class="form-group">
+            <label for="Phone">Enter Phone</label>
+            <input name="Phone" class="form-control" id="phone" value="@Model.Phone" />
+        </div>
+        <div class="form-group">
+            <label for="Email">Enter Email</label>
+            <input name="Email" class="form-control" id="email" value="@Model.Email" />
+        </div>
+        <div class="form-group">
+            <label for="ImagePath">Edit Image</label>
+            <img src="~/Images/@Model.ImagePath" height="100" alt="This is a student" />
+            <input type="file" name="ImagePath" class="form-control" id="imagePath" value="@Model.ImagePath" />
+        </div>
+        <button class="bg-primary mt-3 border-0 rounded px-3 py-2 text-light" type="submit">Update Student</button>
+    </form>
+</div>

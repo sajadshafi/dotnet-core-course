@@ -2,21 +2,41 @@
 @model StudentModel
 
 <div class="card" style="width: 18rem;">
-  @if(Model.ImagePath != null) {
-    <img class="card-img-top" src="~/Images/@Model.ImagePath" alt="Card image cap">
-  } else {
-    <img class="card-img-top" src="~/Img/user.webp" alt="Card image cap">
-  }
-  <div class="card-body">
-    <h5 class="card-title">@Model.Name</h5>
-    <p><span>Phone No: </span>@Model.Phone</p>
-    <p><span>Email: </span>@Model.Email</p>
-    <div class="d-flex">
-    <a asp-controller="Student" asp-action="StudentDetails" asp-route-Id="@Model.Id" class="btn btn-primary">Show</a>
-    <div class="d-flex">
-        <a class="bg-danger ms-3 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="DeleteCourse" asp-route-Id=@Model.Id>Delete</a>
-        <a class="bg-warning mx-2 px-3 py-2 text-light rounded" asp-controller="Course" asp-action="EditCourse" asp-route-Id=@Model.Id>Edit</a>
+    @if (Model.ImagePath != null)
+    {
+        <img class="card-img-top" src="~/Images/@Model.ImagePath" alt="Card image cap">
+    }
+    else
+    {
+        <img class="card-img-top" src="~/Img/user.webp" alt="Card image cap">
+    }
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p><span>Phone No: </span>@Model.Phone</p>
+        <p><span>Email: </span>@Model.Email</p>
+        <div class="d-flex">
+            <a asp-controller="Student" asp-action="StudentDetails" asp-route-Id="@Model.Id" class="btn btn-primary">Show</a>
+            <div class="d-flex">
+                <button id="deleteStudent" onclick="deleteStudent(@Model.Id)" class="btn btn-danger">Delete</button>
+                @*<a class="bg-danger ms-3 px-3 py-2 text-light rounded" asp-controller="Student" asp-action="DeleteStudent" asp-route-Id=@Model.Id>Delete</a>*@
+                <a class="bg-warning mx-2 px-3 py-2 text-light rounded" asp-controller="Student" asp-action="EditStudent" asp-route-Id=@Model.Id>Edit</a>
+            </div>
+        </div>
     </div>
+</div>
+<div class="modal" id="deletePopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure!</h5>
+                <button type="button" id="close_icon" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <a type="button" id="confirm_button" class="btn btn-danger">Confirm</a>
+                <button type="button" id="close_model" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
