@@ -64,6 +64,44 @@ public class HomeController : Controller
         }
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetEmployeeById(int? id)
+    {
+        if (id == null)
+            return BadRequest();
+
+        Employee employee = await _db.Employees.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        if (employee == null)
+            return NotFound();
+
+        return Ok(employee);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateEmployee(Employee emp)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest();
+        try
+        {
+            Employee employee = await _db.Employees.FirstOrDefaultAsync(x => x.Id == emp.Id);
+            if (employee == null)
+                return NotFound();
+
+            employee.Name = emp.Name;
+            employee.Phone = emp.Phone;
+            employee.Email = emp.Email;
+
+            await _db.SaveChangesAsync();
+            return Ok(emp);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+            return StatusCode(500);
+        }
+    }
+
     public IActionResult Privacy()
     {
         return View();
