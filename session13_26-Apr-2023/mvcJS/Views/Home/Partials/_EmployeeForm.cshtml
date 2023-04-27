@@ -1,0 +1,66 @@
+<!-- Add new Modal -->
+<div class="modal fade" id="EmployeeForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="employeeForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" placeholder="name" class="my-3 form-control" name="name" required />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="phone" class="my-3 form-control" name="phone" />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="email" class="my-3 form-control" name="email" />
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="editEmployeeForm">
+        @* <input type="hidden" name="id" /> *@
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" placeholder="name" class="my-3 form-control" name="name" required />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="phone" class="my-3 form-control" name="phone" />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="email" class="my-3 form-control" name="email" />
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
