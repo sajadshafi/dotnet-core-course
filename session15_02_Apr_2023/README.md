@@ -1,5 +1,9 @@
 # Dependency Injection using Autofac
 
+[click here to download lecture video](https://www.idrive.com/idrive/sh/sh?k=s5n6w5u7x6)
+
+Setting up dependency injection using autofac.
+
 ```C#
 // ** Begin composition root
 public static class Program
