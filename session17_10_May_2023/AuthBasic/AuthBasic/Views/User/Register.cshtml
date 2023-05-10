@@ -1,0 +1,54 @@
+﻿@using AuthBasic.Models.ViewModels
+@model UserVM
+
+<div style="min-height:75vh;" class="d-flex justify-content-center align-content-center align-items-center">
+    <div style="border-radius:1rem;width:50%;" class="shadow-lg">
+        <p style="font-size:2rem;border-top-right-radius:1rem;border-top-left-radius:1rem;"
+           class="text-center text-light text-uppercase bg-info">Register</p>
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="px-4">
+            <div class="d-flex justify-content-center p-2 border-1">
+                <img style="height:100px;width:100px;"
+                     class="rounded-full"
+                     src="/images/pngegg.png" id="icon" alt="User Icon" />
+            </div>
+            @if (TempData["result"] != null) {
+                <p class="alert alert-success">@TempData["result"]</p>
+            }
+            @if (TempData["error"] != null) {
+                <p class="alert alert-danger">@TempData["error"]</p>
+            }
+            <!-- Login Form -->
+            <form asp-action="register" class="mt-2">
+                <div class="form-group">
+                    <input asp-for=Name type="text" class="form-control" placeholder="Full Name">
+                    <span class="text-danger" asp-validation-for=Name></span>
+                </div>
+                <div class="form-group my-2">
+                    <input asp-for=Email type="text" class="form-control" placeholder="Email">
+                    <span class="text-danger" asp-validation-for=Email></span>
+                </div>
+                <div class="form-group my-2">
+                    <input asp-for=Username type="text" class="form-control" placeholder="Username">
+                    <span class="text-danger" asp-validation-for=Username></span>
+                </div>
+                <div class="form-group my-2">
+                    <input type="password" asp-for=Password class="form-control" placeholder="password">
+                    <span class="text-danger" asp-validation-for=Password></span>
+                </div>
+                <div class="form-group my-2">
+                    <input type="password" asp-for=ConfirmPassword class="form-control" placeholder="Confirm password">
+                    <span class="text-danger" asp-validation-for=ConfirmPassword></span>
+                </div>
+                <input style="width:100%;" type="submit" class="my-4 d-block px-4 m-0 py-2 btn btn-primary" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("~/Views/Shared/_ValidationScriptsPartial.cshtml");
+    }
+}
