@@ -1,6 +1,6 @@
 # AspNet Core Identity Authentication and Authorization
 
-[Click here to download the lecture]()
+[Click here to download the lecture](https://www.idrive.com/idrive/sh/sh?k=m5l9w3l2f5)
 
 ## Packages required
 
@@ -30,7 +30,6 @@ useAuthentication();
 useAuthorization();
 ```
 
-
 ## Inject
 
 Inject `UserManager` and `SignInManager` to manage login and register functionalities
@@ -51,9 +50,9 @@ builder.Services.AddControllersWithViews()
  app.UseNToastNotify();
 ```
 
-- Configure _layout
+- Configure \_layout
 
-add `@await Component.InvokeAsync("NToastNotify")` to _layout.cshtml
+add `@await Component.InvokeAsync("NToastNotify")` to \_layout.cshtml
 
 and finally use Toast message
 Inject service `IToastNotification` and invoke different types of toastr messages
