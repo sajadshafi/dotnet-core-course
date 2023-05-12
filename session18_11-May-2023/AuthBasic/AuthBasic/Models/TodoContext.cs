@@ -7,5 +7,6 @@ namespace AuthBasic.Models {
         {}
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

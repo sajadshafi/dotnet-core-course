@@ -1,7 +1,155 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+@*@using AuthBasic.Models.ViewModels
+@model UserVM*@
+@model IEnumerable<User>
+<!-- Button to trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">
+    Add New User
+</button>
+<!-- Modal for adding new User -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-action="AddUser">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="Name" required>
+                    </div>
 
-<h3>This is dashboard</h3>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="username" name="Username" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for adding new Student -->
+@*<div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStudentModalLabel">Add New Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="index" method="post" asp-action="AddStudent">
+                    <div class="form-group">
+                        <input type="text" asp-for=Name class="form-control" placeholder="Name">
+                        <span class="text-danger" asp-validation-for=Name></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for=Email class="form-control" placeholder="Email">
+                        <span class="text-danger" asp-validation-for=Email></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for=Phone class="form-control" placeholder="Phone">
+                        <span class="text-danger" asp-validation-for=Phone></span>
+                    </div>
+                     <div class="form-group">
+                        <input type="text" asp-for=Phone class="form-control" placeholder="Phone">
+                        <span class="text-danger" asp-validation-for=Phone></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!-- Modal for Editing new User -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Edit New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-action="EditUser">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="username" name="Username" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteUserModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Delete User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                <button type="button" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table for displaying User details -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Username</td>
+                <td>
+                    <a href="@Url.Action("EditUser", new { id = user.Id })" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        Edit
+                    </a> |
+                    <a href="@Url.Action("DeleteUser", new { id = user.Id })" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("~/Views/Shared/_ValidationScriptsPartial.cshtml");
+    }
+}
