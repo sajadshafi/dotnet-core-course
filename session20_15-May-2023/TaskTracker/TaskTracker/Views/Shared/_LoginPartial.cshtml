@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using TaskTracker.Models
+@inject SignInManager<SystemUser> signInManager
+
+@if (signInManager.IsSignedIn(User)) {
+    <!-- Avatar -->
+    <div class="btn-group">
+        <button type="button" class="btn text-capitalize mask-custom py-2 px-3 text-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                 class="rounded-circle"
+                 height="25"
+                 alt="Black and White Portrait of a Man"
+                 loading="lazy" />
+            <span class="mx-1">@User.Identity?.Name</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a asp-action="logout" asp-controller="account" class="dropdown-item">Logout</a></li>
+        </ul>
+    </div>
+} else {
+    <div class="d-flex align-items-center mt-lg-0 mt-3">
+        <a asp-controller="account" asp-action="login" class="btn mask-custom border-0 py-2 px-3 text-light text-uppercase">
+            Login
+        </a>
+        <a asp-controller="account" asp-action="register" class="btn mask-custom border-0 py-2 px-3 text-light text-uppercase">
+            Register
+        </a>
+    </div>
+}
