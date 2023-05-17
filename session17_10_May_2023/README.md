@@ -1,6 +1,6 @@
-# Continue to Authentication and Authorization
+# Session 17 - Continue to Authentication and Authorization
 
-[Click here to download the lecture](https://www.idrive.com/idrive/sh/sh?k=h8d6u3v0l0)
+[Click here to download the lecture](https://www.idrive.com/idrive/sh/sh?k=p6a9r6e0o7)
 
 ## Authentication
 

@@ -1,6 +1,6 @@
 # Session 04 - Implementing MVC logic
 
-[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=n7y4b7n7t7)
+[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=e0b9j9l6s7)
 
 ## Introduction
 In this lecture we have completed the `CRUD` process in our simple application.

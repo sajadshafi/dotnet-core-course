@@ -1,6 +1,6 @@
 # Session 08 - JavaScript and DOM
 
-[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=a8i1x4t5x8)
+[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=w2h2u3d0c5)
 
   - FIXME: Fix image updation not working
             - Encryption type to form is not set

@@ -1,6 +1,6 @@
 # Session 01 - Entity Framework Core
 
-[Click to download the lecture video here](https://www.idrive.com/idrive/sh/sh?k=x2y3f2z3u5)
+[Click to download the lecture video here](https://www.idrive.com/idrive/sh/sh?k=i0c5q3n1u4)
 
 ## Introduction
 Entity Framework (EF) Core is a lightweight, extensible, open source and cross-platform version of the popular Entity Framework data access technology. 
