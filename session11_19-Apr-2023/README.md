@@ -1,6 +1,6 @@
 ## Session 11 - Continuing Javascript DOM and Fetching methods
 
-[Download Video lecture here](https://www.idrive.com/idrive/sh/sh?k=i5i8n9i2l2)
+[Download Video lecture here](https://www.idrive.com/idrive/sh/sh?k=g1y0p3o5v2)
 
 
 ### Fix previous problem:

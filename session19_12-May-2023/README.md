@@ -1,4 +1,4 @@
-# AspNet Core Identity Authentication and Authorization
+# Session 19 -  AspNet Core Identity Authentication and Authorization
 
 [Click here to download the lecture](https://www.idrive.com/idrive/sh/sh?k=m5l9w3l2f5)
 

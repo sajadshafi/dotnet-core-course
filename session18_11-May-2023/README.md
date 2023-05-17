@@ -1,6 +1,4 @@
-# Continue to Authentication and Authorization
-
-[Click here to download the lecture]()
+# Session 18 - Continue to Authentication and Authorization
 
 ## Authentication
 

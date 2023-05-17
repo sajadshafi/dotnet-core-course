@@ -1,4 +1,4 @@
-# Continuing Authentication and Authorization
+# Session 20 - Continuing Authentication and Authorization
 
 [Download video lecture](https://www.idrive.com/idrive/sh/sh?k=i7e6k5b6m6)
 

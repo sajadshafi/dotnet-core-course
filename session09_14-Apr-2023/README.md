@@ -1,5 +1,5 @@
 # session 09 - Javascript DOM
-[Click to download the video lecture](https://www.idrive.com/idrive/sh/sh?k=t7y8o9t9o0)
+[Click to download the video lecture](https://www.idrive.com/idrive/sh/sh?k=y4t1z7f0o3)
 
 Document Object Model - Manipulation of the document or we can say webpage
 

@@ -1,12 +1,11 @@
 # session 10 - Javascript DOM
 
-[Download Video lecture here](https://www.idrive.com/idrive/sh/sh?k=x7w9i5v5e3)
+[Click to download the video lecture](https://www.idrive.com/idrive/sh/sh?k=x7g6f5r7z2)
 
 Javascript is a programming language that helps to create dynamic website. 
 
 In a Webpage all the elements are structured as a tree like data structure where the top node is \<HTML\> and then the rest of the element become a child and subchild of this top root node.
 
-[Click to download the video lecture](https://www.idrive.com/idrive/sh/sh?k=t7y8o9t9o0)
 
 Document Object Model - Manipulation of the document or we can say webpage.
 

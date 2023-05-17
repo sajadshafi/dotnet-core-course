@@ -1,6 +1,6 @@
 # Session 03 - Database connectivity and configurations
 
-[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=e6c8w8r8l5)
+[Click here to download the lecture for this session](https://www.idrive.com/idrive/sh/sh?k=n8e9r5c5n2)
 
 ## Introduction
 In this session we will look at _Layouts, passing data to views, and DbConnectivity.

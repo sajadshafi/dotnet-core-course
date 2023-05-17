@@ -1,6 +1,6 @@
 # Session 02 - Overview of MVC Architechture
 
-[Click here to download the Video Lecture](https://www.idrive.com/idrive/sh/sh?k=m7q7r5s5u7)
+[Click here to download the Video Lecture](https://www.idrive.com/idrive/sh/sh?k=c7c7y9d2c2)
 
 # Introduction
 The Model-View-Controller (MVC) architectural pattern separates an application into three main groups of components: Models, Views, and Controllers. This pattern helps to achieve [separation of concerns](https://learn.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns). Using this pattern, user requests are routed to a Controller which is responsible for working with the Model to perform user actions and/or retrieve results of queries. The Controller chooses the View to display to the user, and provides it with any Model data it requires.
