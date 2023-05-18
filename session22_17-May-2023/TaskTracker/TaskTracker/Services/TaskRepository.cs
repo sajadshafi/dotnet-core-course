@@ -42,8 +42,8 @@ namespace TaskTracker.Services {
             }
         }
 
-        public async Task<Response<List<ProjectTaskVM>>> GetAllTasksAsync() {
-            Response<List<ProjectTaskVM>> response = new() {
+        public async Task<Response<IEnumerable<ProjectTaskVM>>> GetAllTasksAsync() {
+            Response<IEnumerable<ProjectTaskVM>> response = new() {
                 Data = new List<ProjectTaskVM>()
             };
 

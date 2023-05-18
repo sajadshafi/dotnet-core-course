@@ -12,8 +12,8 @@ using TaskTracker.Models;
 namespace TaskTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230515113113_TaskModelAdded")]
-    partial class TaskModelAdded
+    [Migration("20230516105817_AdminLTEmigr")]
+    partial class AdminLTEmigr
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
