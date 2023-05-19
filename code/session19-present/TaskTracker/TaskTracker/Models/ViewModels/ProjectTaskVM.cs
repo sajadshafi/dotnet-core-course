@@ -11,6 +11,8 @@ namespace TaskTracker.Models.ViewModels {
         public bool IsCompleted { get; set; }
         public int TaskType { get; set; }
         public Guid? UserId { get; set; }
+        public string PriorityName { get; set; }
+        public string TaskTypeName { get; set; }
 
         public void MapEntityToVM(ProjectTask source, ProjectTaskVM destination) {
             destination.Id = source.Id;
@@ -21,6 +23,8 @@ namespace TaskTracker.Models.ViewModels {
             destination.TaskType = (int)source.TaskType;
             destination.Priority = (int)source.Priority;
             destination.UserId = source.UserId;
+            destination.PriorityName = source.Priority.ToString();
+            destination.TaskTypeName = source.TaskType.ToString();
         }
 
         public void MapVMToEntity(ProjectTaskVM source, ProjectTask destination) {

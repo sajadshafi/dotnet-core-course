@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
+using TaskTracker.Helpers;
 using TaskTracker.IServices;
 using TaskTracker.Models.ViewModels;
 
@@ -17,8 +18,10 @@ namespace TaskTracker.Areas.Admin.Controllers {
         }
 
         [Authorize]
-        public IActionResult Index() {
-            return View();
+        [HttpGet]
+        public async Task<IActionResult> Index() {
+            List<ProjectTaskVM> tasks = await _taskRepo.GetAllTasksAsync();
+            return View(tasks);
         }
 
         [HttpPost]
@@ -30,6 +33,24 @@ namespace TaskTracker.Areas.Admin.Controllers {
                 _toast.AddErrorToastMessage(result.Message);
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult GetTask(Guid? taskId) {
+            // Code to retrieve the task with the specified taskId
+            var task = _taskRepo.GetByIdAsync(taskId);
+            return View(task);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteTask(Guid? taskId) {
+            // Code to delete the task with the specified taskId
+            var result = await _taskRepo.DeleteTaskAsync(taskId);
+            if (result.Success) {
+                _toast.AddSuccessToastMessage(result.Message);
+            } else {
+                _toast.AddErrorToastMessage(result.Message);
+            }
+            return Ok(result);
         }
     }
 }

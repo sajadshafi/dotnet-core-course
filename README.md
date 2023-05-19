@@ -1,4 +1,4 @@
-# C# dotnet core course
-A course for learning C# .net with videos and Coding examples
+# Session 23 - C# dotnet core course
 
-Each of the session contain code files and a `README` file in which there is some description about the session and also contains a Video lecture link.
+In this session we have created function for Delete a project task
+Also fixed some previous issues in Displaying items

@@ -42,19 +42,16 @@ namespace TaskTracker.Services {
             }
         }
 
-        public async Task<Response<List<ProjectTaskVM>>> GetAllTasksAsync() {
-            Response<List<ProjectTaskVM>> response = new() {
-                Data = new List<ProjectTaskVM>()
-            };
+        public async Task<List<ProjectTaskVM>> GetAllTasksAsync() {
+            List<ProjectTaskVM> response = new();
 
             List<ProjectTask> tasks = await _context.ProjectTasks.ToListAsync();
 
             foreach(var task in tasks) {
-                ProjectTaskVM temp = new ProjectTaskVM();
+                ProjectTaskVM temp = new();
                 new ProjectTaskVM().MapEntityToVM(task, temp);
-                response.Data.Add(temp);
+                response.Add(temp);
             }
-
             return response;
         }
 
