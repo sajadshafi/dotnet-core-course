@@ -1,7 +1,8 @@
 # Session 22 - Continuing Task Tracker App
 
-[Download video lecture here](https://www.idrive.com/idrive/sh/sh?k=s3n1f9p0r8)
+[Download video lecture here](https://www.idrive.com/idrive/sh/sh?k=s2p1s5m4e1)
 
-- Form for adding task
-- API for addTask
+- UI for deleting task
+- API for Deleting Task
+
 
