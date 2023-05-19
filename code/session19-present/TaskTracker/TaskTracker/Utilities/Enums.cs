@@ -1,12 +1,12 @@
 ﻿namespace TaskTracker.Utilities {
     public enum TaskType {
-        Bug,
-        Feature
+        BUG = 1,
+        FEATURE = 2
     }
 
     public enum TaskPriority {
-        Low,
-        Medium,
-        High
+        Low = 1,
+        Medium = 2,
+        High = 3
     }
 }

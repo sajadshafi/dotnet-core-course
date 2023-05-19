@@ -1,10 +1,13 @@
-﻿@using TaskTracker
-@using TaskTracker.Models
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-@{
+﻿@{
     Layout = "_AdminLayout";
 }
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using TaskTracker
+@using TaskTracker.Models.ViewModels
+@using TaskTracker.Utilities
+@model IEnumerable<ProjectTaskVM>
+
 
 <section class="content-header">
     <div class="container-fluid">
@@ -36,74 +39,48 @@
             <table class="table m-0">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Item</th>
-                        <th>Status</th>
-                        <th>Popularity</th>
+                        <th>Task Name</th>
+                        <th>Priority</th>
+                        <th>Deadline</th>
+                        <th>TaskType</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="badge badge-success">Shipped</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="badge badge-danger">Delivered</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="badge badge-danger">Delivered</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="badge badge-success">Shipped</span></td>
-                        <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                        </td>
-                    </tr>
+                    @foreach (var task in Model) {
+                        string badgeClass = "";
+                        if (task.Priority == (int)TaskPriority.Low) badgeClass = "badge-success";
+                        else if (task.Priority == (int)TaskPriority.Medium) badgeClass = "badge-warning";
+                        else if (task.Priority == (int)TaskPriority.High) badgeClass = "badge-danger";
+
+                        <tr id="@task.Id">
+                            <td><a href="pages/examples/invoice.html">@task.TaskName</a></td>
+                            <td><span class="badge @badgeClass">@task.PriorityName</span></td>
+
+                            <td><span class="badge badge-success">@task.Deadline.ToString("dd/MM/yyyy")</span></td>
+                            <td>
+                                @{
+                                    string ttypeColor = task.TaskType == 1 ? "badge-primary" : "badge-info";
+                                }
+                                <span class="badge @ttypeColor">@task.TaskTypeName</span>
+                            </td>
+                            <td class="align-middle">
+                                <button data-id=@task.Id onclick="EditTask(this)" class="bg-warning rounded border-0 p-1 fw-bolder text-light me-1" data-mdb-toggle="tooltip" title="Done">
+                                    <ion-icon
+                                              class="fas fa-edit text-light"
+                                              name="checkmark-outline"></ion-icon>
+                                </button>
+                                <button data-id=@task.Id onclick="DeleteTask(this)" class="bg-danger text-light border-0 rounded p-1 fw-bolder" data-mdb-toggle="tooltip" title="Remove">
+                                    <ion-icon class="fas fa-trash" name="trash-outline"></ion-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
         <!-- /.table-responsive -->
     </div>
-    @*@{ await Html.PartialAsync("_AddTaskModal"); }*@
-</div>                      
-    <partial name="_AddTaskModal" />
+</div>
+<partial name="_AddTaskModal" />
+<partial name="_Confirm" />
